@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tcw.mapper.smsdb.sys.SysWordInfoMapper" >
+  <select id="selectList" resultType="WordListDto" >
+    SELECT T1.ID              AS ID
+         , T1.WORD            AS WORD
+         , T1.WORD_TYPE       AS WORD_TYPE
+         , T1.MEMO            AS MEMO
+         , T1.DELETE_TAG      AS DELETE_TAG
+         , T1.TIMELINESS      AS TIMELINESS
+         , T1.CREATE_ID       AS CREATE_ID
+         , T1.CREATE_DT       AS CREATE_DT
+         , T1.UPDATE_ID       AS UPDATE_ID
+         , T1.UPDATE_DT       AS UPDATE_DT
+         , T1.RESERVED_FIELD1 AS RESERVED_FIELD1
+         , T1.RESERVED_FIELD2 AS RESERVED_FIELD2
+      FROM SYS_WORD_INFO T1
+     WHERE T1.DELETE_TAG = '0'
+     <if test="searchItem != null and searchItem != ''">
+       AND INSTR(T1.WORD, CONCAT('|', #{searchItem}, '|')) > 0
+     </if>
+     <if test= "wordArray !=null and wordArray.length > 0">
+       AND (
+            <foreach collection="wordArray" index="index" item="wordItem" open="" separator="or" close="">
+              INSTR(T1.WORD, #{wordItem}) > 0
+            </foreach>
+           )
+     </if>
+     ORDER BY T1.CREATE_DT DESC
+  </select>
+  <select id="selectListCount" resultType="WordListDto" >
+    SELECT COUNT(1) AS TOTAL
+      FROM SYS_WORD_INFO T1
+     WHERE T1.DELETE_TAG = '0'
+     <if test="searchItem != null and searchItem != ''">
+       AND INSTR(T1.WORD, CONCAT('|', #{searchItem}, '|')) > 0
+     </if>
+     ORDER BY T1.CREATE_DT DESC
+  </select>
+  <insert id="insertOne">
+    INSERT INTO SYS_WORD_INFO (
+           WORD
+         , WORD_TYPE
+         , CREATE_ID
+         , CREATE_DT
+         <if test="memo != null and memo != ''">
+         , MEMO
+         </if>
+         ) VALUES (
+           #{word}
+         , #{wordType}
+         , #{createId}
+         , #{createDt}
+         <if test="memo != null and memo != ''">
+         , #{memo}
+         </if>
+         )
+  </insert>
+  <update id="updateOne">
+    UPDATE SYS_WORD_INFO
+       SET UPDATE_ID = #{updateId}
+         , UPDATE_DT = #{updateDt}
+         <if test="word != null and word != ''">
+         , word = #{word}
+         </if>
+         <if test="wordType != null and wordType != ''">
+         , word_type = #{wordType}
+         </if>
+         <if test="memo != null and memo != ''">
+         , MEMO = #{memo}
+         </if>
+         <if test="deleteTag != null and deleteTag != ''">
+         , DELETE_TAG = #{deleteTag}
+         </if>
+         <if test="timeliness != null and timeliness != ''">
+         , TIMELINESS = #{timeliness}
+         </if>
+     WHERE ID = #{id}
+  </update>
+  <update id="updateByArray">
+    UPDATE SYS_WORD_INFO
+       SET UPDATE_ID = #{updateId}
+         , UPDATE_DT = #{updateDt}
+         <if test="word != null and word != ''">
+         , word = #{word}
+         </if>
+         <if test="wordType != null and wordType != ''">
+         , word_type = #{wordType}
+         </if>
+         <if test="memo != null and memo != ''">
+         , MEMO = #{memo}
+         </if>
+         <if test="deleteTag != null and deleteTag != ''">
+         , DELETE_TAG = #{deleteTag}
+         </if>
+         <if test="timeliness != null and timeliness != ''">
+         , TIMELINESS = #{timeliness}
+         </if>
+     WHERE ID IN <foreach item="idItem" index="index" collection="idArray" open="(" separator="," close=")">#{idItem}</foreach>
+  </update>
+</mapper>

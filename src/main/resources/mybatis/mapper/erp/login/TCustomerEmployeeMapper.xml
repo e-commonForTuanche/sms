@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tcw.mapper.erp.login.TCustomerEmployeeMapper" >
+  <select id="selectList" resultType="com.tcw.modules.login.dto.UserInfoDto" >
+	SELECT T1.id                                                                                AS USER_ID
+	     , IFNULL(T1.open_user_id, '')                                                          AS OPEN_USER_ID
+	     , IFNULL(T1.emp_name, '')                                                              AS USER_NAME
+	     , T1.emp_login                                                                         AS LOGIN_ID
+	     , T1.emp_pwd                                                                           AS LOGIN_PW
+	     , GROUP_CONCAT(DISTINCT IFNULL(T2.biz_code, '') ORDER BY IFNULL(T2.biz_code, '') DESC) AS BIZ_CODE
+	  FROM t_employee    T1
+	  LEFT JOIN sys_role T2 ON INSTR(T1.role_ids, concat(',', T2.id, ',')) > 0
+	 WHERE T1.emp_status NOT IN (-1, 5)
+	   AND T1.isdel       = 0
+	   AND T1.emp_login   = #{loginId}
+	   AND T2.role_status = 1
+	 GROUP BY T1.id, T1.open_user_id, T1.emp_name, T1.emp_pwd
+  </select>
+</mapper>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>SMS-短信模板管理</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Import Css File -->
+    <link rel="stylesheet" type="text/css" href="../../lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../css/basic-theme.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../../css/basic.css">
+    
+    <!-- Import Javascript File -->
+    <script type="text/javascript" src="../../lib/jquery.min.js"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="../../lib/easyui/themes/bootstrap/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/easyui/themes/icon.css">
+    
+    <script type="text/javascript" src="../../lib/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../lib/easyui/jquery.easyui.extension.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../css/template.css">
+  </head>
+
+  <body class=""> 
+    <!-- top layout -->
+    <!-- left layout -->
+    <!-- content navi layout -->
+    <div id="baseContentDiv" class="content">
+      <div class="container-fluid-self">
+        <div class="block-self">
+          <form id="templateForm" method="post">
+            <div class="template-row">
+              <div class="labelText"><span>模板类型 : </span></div>
+              <div class="value-row"><input id="templateConfigId" name="templateConfigId"/></div>
+              <div class="extra-row">&nbsp;</div>
+            </div>
+            <div class="template-row">
+              <div class="labelText"><span>模板名称 : </span></div>
+              <div class="value-row"><input id="templateName" name="templateName"/></div>
+              <div class="extra-row">&nbsp;</div>
+            </div>
+            <div class="template-row">
+              <div class="labelText"><span>短信字数限定 : </span></div>
+              <div class="value-row"><input id="limitWordCounts" name="limitWordCounts"/>个字</div>
+              <div class="extra-row">&nbsp;</div>
+            </div>
+            <div class="template-row">
+              <div class="labelText"><span>适用城市 : </span></div>
+              <div class="value-row"><input id="templateCityIds" name="templateCityIds"/></div>
+              <div class="extra-row"><input id="cityCombo"/></div>
+            </div>
+            <div class="template-row">
+              <div class="labelText"><span>适用系统 : </span></div>
+              <div class="value-row"><input id="templateSystemIds" name="templateSystemIds"/></div>
+              <div class="extra-row"><input id="systemCombo"/></div>
+            </div>
+            <div class="template-row">
+              <div class="labelText"><span>适用业务 : </span></div>
+              <div class="value-row"><input id="templateBusinessIds" name="templateBusinessIds"/></div>
+              <div class="extra-row"><input id="bussinessCombo"/></div>
+            </div>
+            <div class="template-row">
+              <div class="labelText"><span>未发送成功是否支持第二天发送 : </span></div>
+              <div class="value-row">
+                  <input id="isSupportResend_Y" type="radio" name="isSupportResend" checked="checked" value="Y" class="row-top"/><span class="mr10">是</span>
+                  <input id="isSupportResend_N" type="radio" name="isSupportResend" value="N" class="row-top"/><span class="mr30">否</span>
+              </div>
+              <div class="extra-row">&nbsp;</div>
+            </div>
+            <div class="template-row">
+              <div class="labelText"><span>是否需要上行短信 : </span></div>
+              <div class="value-row">
+                  <input id="isSupportReceive_Y" type="radio" name="isSupportReceive" checked="checked" value="Y" class="row-top"/><span class="mr10">是</span>
+                  <input id="isSupportReceive_N" type="radio" name="isSupportReceive" value="N" class="row-top"/><span class="mr30">否</span>
+              </div>
+              <div class="extra-row">&nbsp;</div>
+            </div>
+            <div class="template-row">
+              <div class="labelText"><span>短信模板 : </span></div>
+              <div class="value-row"><input id="templateContent" name="templateContent" style="width: 400px; height: 150px;"/></div>
+              <div class="extra-row">
+                <a id="addParamBtn" href="#">添加参数</a>
+                <br><br>
+                <a id="addMultParamBtn" href="#">添加多选项</a>
+              </div>
+            </div>
+            <div class="template-row">
+              <div class="labelText"><span>特别说明 : </span></div>
+              <div class="value-row"><input id="extraMemo" name="extraMemo" style="width: 400px; height: 150px;"/></div>
+              <div class="extra-row">&nbsp;</div>
+            </div>
+            <div class="template-row">
+              <div class="labelText"><span>预览 : </span></div>
+              <div class="value-row"><input id="preview" style="width: 400px; height: 150px;"/></div>
+              <div class="extra-row">&nbsp;</div>
+            </div>
+            <div class="template-btn">
+              <a id="submitBtn" href="#">提交</a>&nbsp;&nbsp;<a id="cancelBtn" href="#">取消返回</a>
+            </div>
+        </form>
+        </div>
+      </div>
+    </div>
+    
+    <script src="../../lib/bootstrap/js/bootstrap.js"></script>
+    <script src="../../js/layout/layout.js"></script>
+    <script src="../../js/template/templateAction.js"></script>
+  </body>
+</html>
+
+

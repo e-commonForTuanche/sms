@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>SMS-手机号查数据</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Import Css File -->
+    <link rel="stylesheet" type="text/css" href="../../lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../css/basic-theme.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../../css/basic.css">
+    
+    <!-- Import Javascript File -->
+    <script type="text/javascript" src="../../lib/jquery.min.js"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="../../lib/easyui/themes/bootstrap/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/easyui/themes/icon.css">
+    
+    <script type="text/javascript" src="../../lib/easyui/jquery.easyui.min.js"></script>
+  </head>
+
+  <body class=""> 
+    <!-- top layout -->
+    <!-- left layout -->
+    <!-- content navi layout -->
+    <div id="baseContentDiv" class="content">
+      <div class="container-fluid-self">
+        <div class="block-self">
+            <span>手机号码 : </span><input id="textBox">
+            <span>日期 : </span><input id="dateBox1" type="text">-<input id="dateBox2" type="text">
+            <a id="searchBtn" href="#">查询</a>
+        </div>
+      </div>
+      
+      <div class="container-fluid-self">
+        <div class="block-self">
+            <table id="listDatagrid"></table>
+        </div>
+      </div>
+    </div>
+
+    <script src="../../lib/bootstrap/js/bootstrap.js"></script>
+    <script src="../../js/layout/layout.js"></script>
+    <script type="text/javascript">
+        $("[rel=tooltip]").tooltip();
+        $(function() {
+        	SMS_LAYOUT_LOAD();
+        	$('#textBox').textbox({
+        		width: 200,
+        	    searcher:function(value,name){
+        	    	alert(value);
+        	    },
+        	    prompt:'请输入手机号码'
+        	});
+        	$('#searchBtn').linkbutton({
+        	    iconCls: 'icon-search'
+        	});
+        	
+        	$('#dateBox1').datebox({});
+        	$('#dateBox2').datebox({});
+        	
+        	$('#listDatagrid').datagrid({
+        	    url:'/testDB?dbName=ecpdb',
+        	    width: 'auto',
+        	    height: 500,
+        	    rownumbers: true,
+        	    fitcolumns: true,
+        	    singleselect: false,
+        	    columns:[[
+        	        {field:'loginId',title:'业务',width:100},
+        	        {field:'loginPw',title:'系统',width:100},
+        	        {field:'loginPw',title:'号段',width:100},
+        	        {field:'loginPw',title:'运营商',width:100},
+        	        {field:'loginPw',title:'模板名称',width:100},
+        	        {field:'loginPw',title:'是否发送成功',width:100},
+        	        {field:'loginPw',title:'发送内容',width:100},
+        	        {field:'loginPw',title:'发送时间',width:100}
+        	    ]]
+        	});
+        });
+    </script>
+  </body>
+</html>
+
+

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>SMS-黑名单管理</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Import Css File -->
+    <link rel="stylesheet" type="text/css" href="../../lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../css/basic-theme.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../../css/basic.css">
+    
+    <!-- Import Javascript File -->
+    <script type="text/javascript" src="../../lib/jquery.min.js"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../../lib/easyui/themes/bootstrap/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/easyui/themes/icon.css">
+    
+    <script type="text/javascript" src="../../lib/easyui/jquery.easyui.min.js"></script>
+  </head>
+
+  <body class=""> 
+    <!-- top layout -->
+    <!-- left layout -->
+    <!-- content navi layout -->
+    <div id="baseContentDiv" class="content">
+      <div class="container-fluid-self">
+        <div class="block-self">
+            <span>手机号 : </span><input id="searchItem">
+            <a id="searchBtn" href="#">查询</a>
+        </div>
+      </div>
+      
+      <div class="container-fluid-self">
+        <div class="block-self">
+            <table id="listDatagrid"></table>
+        </div>
+      </div>
+    </div>
+    
+    <div id="ACTION_DIALOG"></div>
+
+    <script src="../../lib/bootstrap/js/bootstrap.js"></script>
+    <script src="../../js/layout/layout.js"></script>
+    <script src="../../js/system/blackList.js"></script>
+    <script src="../../js/system/blackAction.js"></script>
+  </body>
+</html>
+
+

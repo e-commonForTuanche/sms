@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>SMS-短信模板管理</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Import Css File -->
+    <link rel="stylesheet" type="text/css" href="../../lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../css/basic-theme.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../../css/basic.css">
+    
+    <!-- Import Javascript File -->
+    <script type="text/javascript" src="../../lib/jquery.min.js"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="../../lib/easyui/themes/bootstrap/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/easyui/themes/icon.css">
+    
+    <script type="text/javascript" src="../../lib/easyui/jquery.easyui.min.js"></script>
+  </head>
+
+  <body class=""> 
+    <!-- top layout -->
+    <!-- left layout -->
+    <!-- content navi layout -->
+    <div id="baseContentDiv" class="content">
+      <div class="container-fluid-self">
+        <div class="block-self">
+            <span>模板名称 : </span><input id="searchItem">
+            <span>模板类型 : </span><input id="templateTypeCombo">
+            <span>适用城市 : </span><input id="templateCityCombo">
+            <span>业务类型 : </span><input id="templateBusinessCombo">
+            <a id="searchBtn" href="#">查询</a>
+        </div>
+      </div>
+      
+      <div class="container-fluid-self">
+        <div class="block-self">
+            <table id="listDatagrid"></table>
+        </div>
+      </div>
+    </div>
+    
+    <script src="../../lib/bootstrap/js/bootstrap.js"></script>
+    <script src="../../js/layout/layout.js"></script>
+    <script src="../../js/template/templateList.js"></script>
+  </body>
+</html>
+
+

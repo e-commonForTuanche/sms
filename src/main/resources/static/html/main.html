@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>SMS首页</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Import Common Css File -->
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../css/basic-theme.css">
+    <link rel="stylesheet" type="text/css" href="../lib/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../css/basic.css">
+    
+    <!-- Import Common Javascript File -->
+    <script type="text/javascript" src="../lib/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/common.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="../lib/easyui/themes/bootstrap/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../lib/easyui/themes/icon.css">
+    
+    <script type="text/javascript" src="../lib/easyui/jquery.easyui.min.js"></script>
+    
+  </head>
+
+  <body class="">
+    <!-- top layout -->
+    <!-- left layout -->
+    <!-- content navi layout -->
+    
+    <div id="baseContentDiv" class="content">
+      <div class="container-fluid-self">
+        <div class="block-self">
+            <input id="searchBox" style="width:100px">
+            <br>
+            <input id="dateBox" type="text">
+            <br>
+            <input id="comboBox">
+            <br>
+            <a id="searchBtn" href="#">Search</a>
+        </div>
+      </div>
+      
+      <div class="container-fluid-self">
+        <div class="block-self">
+            <table id="listDatagrid"></table>
+        </div>
+      </div>
+    </div>
+
+    <script src="../lib/bootstrap/js/bootstrap.js"></script>
+    <script src="../js/layout/layout.js"></script>
+    <script type="text/javascript">
+        $("[rel=tooltip]").tooltip();
+        $(function() {
+        	SMS_LAYOUT_LOAD();
+        	
+        	$('#searchBox').searchbox({
+        	    searcher:function(value,name){
+        	        alert("searchBox");
+        	    },
+        	    prompt:'Please Input Value'
+        	});
+        	
+        	$('#dateBox').datebox({});
+        	
+        	var comboValueArray = [
+        	    {"id":1, "text":"text1"}
+        	  , {"id":2, "text":"text2"}
+        	  , {"id":3, "text":"text3"}
+        	];
+        	$('#comboBox').combobox({
+        	    valueField:'id',
+        	    textField:'text',
+        	    data:comboValueArray
+        	});
+        	
+        	$('#searchBtn').linkbutton({
+        	    iconCls: 'icon-search'
+        	});
+        	
+        	$('#listDatagrid').datagrid({
+        	    url:'/testDB?dbName=ecpdb',
+        	    width: 'auto',
+        	    height: 500,
+        	    rownumbers: true,
+        	    fitcolumns: true,
+        	    singleselect: false,
+        	    pagination: true,
+        	    columns:[[
+        	        {field:'loginId',title:'loginId',width:100},
+        	        {field:'loginPw',title:'loginPw',width:100}
+        	    ]]
+        	});
+        	$('#listDatagrid').datagrid('getPager').pagination({  
+                pageSize: 10,  
+                pageNumber: 1,  
+                pageList: [10, 20, 30, 40, 50],  
+                beforePageText: '第',//页数文本框前显示的汉字   
+                afterPageText: '页    共 {pages} 页',  
+                displayMsg: '当前显示 {from} - {to} 条记录   共 {total} 条记录',  
+           });
+        	
+        });
+    </script>
+  </body>
+</html>
+
+
